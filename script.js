@@ -1,5 +1,6 @@
 const display = document.querySelector('.cards');
 
+
 let myLibrary = [];
 
 function Book() {
@@ -14,14 +15,23 @@ function Book() {
                 <h2>${myLibrary[prop].title}</h2>
                 <h3>${myLibrary[prop].author}</h3>
                 <p>${myLibrary[prop].page}</p>
-                ${(myLibrary[prop].status) ? '<button>Read</button>' : '<button>Not Read</button>'}
-                <button>Remove</button>
+                ${(myLibrary[prop].status) ? `<button>Read</button>` : `<button>Not Read</button>`}
+                <button class="removeBtn">Remove</button>
             </div>
         `;
+
+        const removeBtn = bookDiv.querySelector('.removeBtn');
+        removeBtn.addEventListener('click', () => {
+            bookDiv.remove();
+        })
+
 
         display.appendChild(bookDiv);
     }
 }
+
+
+
 
 
 function addBookToLibrary(title, author, page, status) {
