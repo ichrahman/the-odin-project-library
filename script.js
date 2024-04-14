@@ -96,6 +96,10 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
     var title = document.getElementById("title").value;
     var author = document.getElementById("author").value;
     var page = document.getElementById("page").value;
+    document.getElementById('title').value = "";
+    document.getElementById('author').value = "";
+    document.getElementById('page').value = "";
+    checkbox.checked = false;
     addBookToLibrary(title, author, page, status)
     // console.log(title, author, page, status);
     // Here you can perform further actions with the submitted data
