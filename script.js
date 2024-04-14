@@ -15,16 +15,26 @@ function Book() {
                 <h2>${myLibrary[prop].title}</h2>
                 <h3>${myLibrary[prop].author}</h3>
                 <p>${myLibrary[prop].page}</p>
-                ${(myLibrary[prop].status) ? `<button>Read</button>` : `<button>Not Read</button>`}
+                <button class="readBtn">${myLibrary[prop].status ? "Read" : "Not Read"}</button>
                 <button class="removeBtn">Remove</button>
             </div>
         `;
 
-        const removeBtn = bookDiv.querySelector('.removeBtn');
-        removeBtn.addEventListener('click', () => {
-            bookDiv.remove();
+        const readBtn = bookDiv.querySelector('.readBtn');
+        readBtn.addEventListener('click', () => {
+            myLibrary[prop].status = !myLibrary[prop].status;
+            readBtn.textContent = myLibrary[prop].status ? "Read" : "Not Read";
         })
 
+        const removeBtn = bookDiv.querySelector('.removeBtn');
+        removeBtn.addEventListener('click', () => {
+            const indexToRemove = myLibrary.indexOf(myLibrary[prop])
+            console.log(indexToRemove);
+            if (indexToRemove !== -1) {
+                myLibrary.splice(indexToRemove, 1);
+                bookDiv.remove()
+            }
+        })
 
         display.appendChild(bookDiv);
     }
