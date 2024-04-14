@@ -8,6 +8,10 @@ body{
     font-family: 'Courier New', Courier, monospace;
 }
 
+button, h1, input[name="myCheckbox"]{
+    cursor: pointer;
+}
+
 .container{
     max-width: 1200px;
     margin: 0 auto;
