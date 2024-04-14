@@ -88,17 +88,51 @@ p{
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
+}
+
+
+/* Modal Content/Box */
+.modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 30px 20px;
     border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: clamp(300px, 60%, 420px); /* Could be more or less, depending on screen size */
+    border-radius: 5px;
   }
-  
+
+.modal-content h2{
+    text-align: center;
+}
+
+.form-container{
+    /* display: flex; */
+    /* justify-content: center; */
+    margin: 0 auto;
+}
+
+#myForm input{
+    padding: 10px;
+    border-radius: 5px;
+    width: 90%;
+}
+
+.input-container{
+    text-align: center;
+}
+
+.input-container input{
+    font-size: large;
+    font-weight: 800;
+}
+
+.checkbox-container{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
   /* Close Button */
   .close {
     color: #aaa;
