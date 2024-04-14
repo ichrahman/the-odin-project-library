@@ -1,20 +1,19 @@
 const display = document.querySelector('.cards');
 
-const myLibrary = [{ "author": "Shihab", "title": "Shihab going to win", "pages": 230, "status": false }, { "author": "Rahman", "title": "Hold on There", "pages": 120, "status": true }, { "author": "Shihab", "title": "Shihab going to win", "pages": 230, "status": false }, { "author": "Rahman", "title": "Hold on There", "pages": 120, "status": true }];
-
-
+let myLibrary = [];
 
 function Book() {
     // the constructor...
+    display.innerHTML = " ";
     for (let prop in myLibrary) {
         const bookDiv = document.createElement('div');
         bookDiv.classList.add('book');
         bookDiv.innerHTML =
             `
             <div>
-                <h2>${myLibrary[prop].author}</h2>
-                <h3>${myLibrary[prop].title}</h3>
-                <p>${myLibrary[prop].pages}</p>
+                <h2>${myLibrary[prop].title}</h2>
+                <h3>${myLibrary[prop].author}</h3>
+                <p>${myLibrary[prop].page}</p>
                 ${(myLibrary[prop].status) ? '<button>Read</button>' : '<button>Not Read</button>'}
                 <button>Remove</button>
             </div>
@@ -24,8 +23,65 @@ function Book() {
     }
 }
 
-Book();
 
-function addBookToLibrary() {
+function addBookToLibrary(title, author, page, status) {
     // do stuff here
+    myLibrary = [...myLibrary, { "title": title, "author": author, "page": page, "status": status }];
+    // console.log("myLibrary: ", myLibrary);
+    Book();
 }
+
+
+
+// modal
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+var checkbox = document.getElementById("myCheckbox");
+
+
+// When the user clicks on the button, open the modal
+btn.onclick = function () {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Submit form
+document.getElementById("myForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+    let status;
+    // Check if the checkbox is checked
+    if (checkbox.checked) {
+        status = true;
+    } else {
+        status = false;
+    }
+    var title = document.getElementById("title").value;
+    var author = document.getElementById("author").value;
+    var page = document.getElementById("page").value;
+    addBookToLibrary(title, author, page, status)
+    // console.log(title, author, page, status);
+    // Here you can perform further actions with the submitted data
+    modal.style.display = "none"; // Close modal after submission
+});
+
+
+
+
